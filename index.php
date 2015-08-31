@@ -6,7 +6,11 @@
 	<body>
 		<?php
 			//Check POST data, if present add to database
-			$connection = pg_connect("host=localhost dbname=db_birthdate_app user=birthdate password=password");
+			$host = getenv("DB_HOST");
+			$db_name = getenv("DB_NAME");
+			$user = getenv("DB_USER");
+			$password = getenv("DB_PASSWORD");
+			$connection = pg_connect("host=$host dbname=$db_name user=$user password=$password");
 			
 			pg_query($connection, "CREATE TABLE IF NOT EXISTS version (version int)");
 			
