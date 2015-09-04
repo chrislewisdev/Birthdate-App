@@ -19,7 +19,7 @@
 			if (empty($host)) $host = "localhost";
 			if (empty($db_name)) $db_name = "birthdate-db";
 			if (empty($user)) $user = "rootuser";
-			if (empty($password)) $password = "secret"; 
+			if (empty($password)) $password = "secret";
 
 			$connection = pg_connect("host=$host dbname=$db_name user=$user password=$password");
 
@@ -38,8 +38,7 @@
 				pg_query($connection, "UPDATE version SET version = 2");
 			}
 
-			pg_query($connection, "CREATE TABLE IF NOT EXISTS birthdates (name CHAR(64), birthdate timestamp, dateEntered timestamp)");
-
+			pg_query($connection, "CREATE TABLE IF NOT EXISTS birthdates (name CHAR(64), birthdate timestamp, dateEntered timestamp, lastName CHAR(64))");
 
 			if (isset($_POST["name"]))
 			{
