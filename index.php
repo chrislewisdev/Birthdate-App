@@ -14,6 +14,13 @@
 			$db_name = getenv("DB_NAME");
 			$user = getenv("DB_USER");
 			$password = getenv("DB_PASSWORD");
+
+			// Default parameters if db not specified
+			if (empty($host)) $host = "localhost";
+			if (empty($db_name)) $db_name = "birthdate-db";
+			if (empty($user)) $user = "rootuser";
+			if (empty($password)) $password = "secret"; 
+
 			$connection = pg_connect("host=$host dbname=$db_name user=$user password=$password");
 
 			pg_query($connection, "CREATE TABLE IF NOT EXISTS version (version int)");
